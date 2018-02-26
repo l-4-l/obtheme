@@ -41,6 +41,14 @@ class ThemeFileSelector(gtk.ScrolledWindow):
                 themerc_path = "%s/%s/openbox-3/themerc" % (theme_dir_path, theme)
                 if os.path.exists(themerc_path):
                     themes[theme] = themerc_path
+        theme_dir_path = os.getenv('HOME')+'/.local/share/themes'
+        if os.path.exists(theme_dir_path):
+            for theme in os.listdir(theme_dir_path):
+                if theme == 'obtheme':
+                    continue
+                themerc_path = "%s/%s/openbox-3/themerc" % (theme_dir_path, theme)
+                if os.path.exists(themerc_path):
+                    themes[theme] = themerc_path
         theme_dir_path = '/usr/share/themes'
         if os.path.exists(theme_dir_path):
             for theme in os.listdir(theme_dir_path):
